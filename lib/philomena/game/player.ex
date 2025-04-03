@@ -23,8 +23,18 @@ defmodule Philomena.Games.Player do
     player
     |> cast(attrs, [:points])
     |> put_assoc(:user, user)
-    |> put_assoc(:game, Repo.one(limit(Game, 1)))
-    |> put_assoc(:team, Repo.one(limit(where(Team, [t], t.id == ^(rem(user.id, 2) + 1)), 1)))
+    |> put_assoc(:game, Repo.one(limit(where(Game, [g], g.id == 2), 1)))
+    |> put_assoc(:team, Repo.one(limit(where(Team, [t], t.id == 3), 1)))
     |> validate_required([:points, :user, :game, :team])
+  end
+
+  def points_changeset(player, attrs) do
+    player
+    |> cast(attrs, [:points])
+  end
+
+  def cheater_changeset(player, attrs) do
+    player
+    |> cast(attrs, [:points, :rank_override])
   end
 end

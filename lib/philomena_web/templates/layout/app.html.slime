@@ -39,3 +39,4 @@ html lang="en"
       = render PhilomenaWeb.LayoutView, "_footer.html", assigns
       form.hidden: input.js-interaction-cache type="hidden" value="{}"
       = clientside_data(@conn)
+    .achievements__overlay.hidden#react-overlay-outlet

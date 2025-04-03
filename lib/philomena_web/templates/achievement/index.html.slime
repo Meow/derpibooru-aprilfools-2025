@@ -1,0 +1,8 @@
+h1 Your achievements
+
+p
+  | Do stuff on the site to earn achievements. Check out the locked achievements for hints.
+strong Achievements are saved on per-browser basis! If you open the site in a different browser / from a different device, they will not transfer.
+
+div#react-outlet
+  strong Loading... if this text does not disappear after a second or so, your browser is incompatible with the event, or you're blocking Javascript

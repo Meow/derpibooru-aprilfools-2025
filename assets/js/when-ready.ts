@@ -33,6 +33,7 @@ import { hideStaffTools } from './staffhider';
 import { pollOptionCreator } from './poll';
 import { warnAboutPMs } from './pmwarning';
 import { imageSourcesCreator } from './sources';
+import { setupAchievementElements } from './achievements';
 
 const functions = [
   loadBooruData,
@@ -64,6 +65,7 @@ const functions = [
   pollOptionCreator,
   warnAboutPMs,
   imageSourcesCreator,
+  setupAchievementElements,
 ];
 
 whenReady(() => {

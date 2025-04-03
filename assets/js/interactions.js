@@ -113,6 +113,8 @@ function resetHidden(imageId) {
 }
 
 function interact(type, imageId, method, data = {}) {
+  window.dispatchEvent(new CustomEvent('imageinteract', { detail: { type, id: imageId, method, data } }));
+
   return fetchJson(method, endpoints[type](imageId), data)
     .then(res => res.json())
     .then(res => setScore(imageId, res));

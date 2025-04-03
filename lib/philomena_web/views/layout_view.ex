@@ -61,7 +61,12 @@ defmodule PhilomenaWeb.LayoutView do
       fancy_tag_upload: if(user, do: user.fancy_tag_field_on_upload, else: "true") |> to_string(),
       interactions: Jason.encode!(interactions),
       ignored_tag_list: Jason.encode!(ignored_tag_list(conn.assigns[:tags])),
-      hide_staff_tools: conn.cookies["hide_staff_tools"] |> to_string()
+      hide_staff_tools: conn.cookies["hide_staff_tools"] |> to_string(),
+      user_faves: if(user, do: user.images_favourited_count, else: nil),
+      user_votes: if(user, do: user.votes_cast_count, else: nil),
+      user_metadata_updates: if(user, do: user.metadata_updates_count, else: nil),
+      user_comments: if(user, do: user.comments_posted_count, else: nil),
+      user_posts: if(user, do: user.forum_posts_count, else: nil)
     ]
 
     data = Keyword.merge(data, extra)

@@ -1,4 +1,4 @@
-= if !!@object.user do
+= if !!@object.user and !anonymous?(@object) do
   - title = rank_for_user(@object.user)
   - rank_class = rank_class_for_user(@object.user)
 

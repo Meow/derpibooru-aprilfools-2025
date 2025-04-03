@@ -17,11 +17,10 @@
 
 .game__team_banner {
   background: #303030;
-  border: 1px solid #00000000;
   border-radius: var(--border-radius);
   color: #d8d8d8;
   text-align: center;
-  padding: 0.1rem;
+  padding: 0.2rem;
   margin-top: 0.1rem;
 }
 
@@ -110,4 +109,82 @@
 
 .game__score {
   margin: 0 0.25rem;
+}
+
+.rank--f {
+  background: #317a7a;
+}
+
+.rank--e {
+  background: #1a6b28;
+}
+
+.rank--d {
+  background: #1d3163;
+}
+
+.rank--c {
+  background: #431d63;
+}
+
+.rank--b {
+  background: #631d41;
+}
+
+.rank--a {
+  background: #967b02;
+}
+
+.rank--s {
+  background: #c24b07;
+}
+
+.rank--idk {
+  background: linear-gradient(30deg, #ad0802, #dd3502, #f08a36);
+  font-weight: bold;
+}
+
+.rank--sweat {
+  background: linear-gradient(to right, #940101, #832c04, #8f8f00, #008100, #094088, #850b85);
+  font-weight: bold;
+}
+
+.rank--afk {
+  background: linear-gradient(to right, #850b85, #6803c7, #2806bd);
+  font-weight: bold;
+}
+
+.rank--trans {
+  color: #303030;
+  background: linear-gradient(cyan, cyan, pink, pink, white, white, pink, pink, cyan, cyan);
+  font-weight: bold;
+}
+
+.rank--thomas {
+  background: #007ba7;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rank--max {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  font-weight: bold;
+}
+
+.rank--cheater {
+  background: var(--danger-color);
 }

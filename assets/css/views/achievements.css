@@ -1,0 +1,114 @@
+@keyframes achievement-vanish {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.achievement {
+  display: grid;
+  grid-template-columns: 3em auto 5em;
+  width: 340px;
+  background: var(--danger-color);
+  padding: var(--padding-small) var(--padding-normal);
+  align-items: center;
+  vertical-align: center;
+  border-radius: 2rem;
+  gap: var(--padding-normal);
+  opacity: 1;
+  z-index: 99999;
+}
+
+.achievement[data-points="10"],
+.achievement[data-points="15"],
+.achievement[data-points="20"] {
+  background: var(--success-color);
+}
+
+.achievement[data-points="25"],
+.achievement[data-points="30"],
+.achievement[data-points="35"],
+.achievement[data-points="40"],
+.achievement[data-points="45"] {
+  background: var(--warning-color);
+}
+
+.achievement[data-points="0"],
+.achievement[data-points="5"] {
+  background: var(--primary-color);
+}
+
+.achievement--vanish {
+  animation-name: achievement-vanish;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.achievement > i {
+  font-size: 1.5em;
+  justify-self: center;
+}
+
+.achievement__body {
+  display: flex;
+  flex-flow: column;
+}
+
+.achievement__title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.achievement__score {
+  font-weight: bold;
+}
+
+.achievements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--padding-small);
+  max-width: calc(100vw - var(--padding-small) * 2);
+}
+
+.achievements--locked {
+  opacity: 0.5;
+}
+
+.achievements--locked .achievement {
+  background: #303030 !important;
+}
+
+.achievements__overlay {
+  position: fixed;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  overflow: visible;
+}
+
+.achievement__new {
+  display: flex;
+  position: absolute;
+  flex-flow: column-reverse;
+  gap: var(--padding-normal);
+  left: calc(50vw - 186px);
+  top: var(--padding-large);
+}
+
+.achievements__stats-table {
+  width: fit-content;
+  min-width: 340px;
+}
+
+.achievement__form {
+  display: inline-flex;
+}
+
+.achievements__score {
+  margin-right: var(--padding-normal);
+}

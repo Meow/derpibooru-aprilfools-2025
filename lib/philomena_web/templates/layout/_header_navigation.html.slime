@@ -39,3 +39,5 @@
     | Galleries
   a.header__link href="/commissions"
     | Commissions
+  a.header__link href="/achievements"
+    i.fa.fa-trophy

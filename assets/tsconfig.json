@@ -6,8 +6,11 @@
     "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true,
+    "jsx": "react",
     "lib": [
       "ES2016",
+      "ES2020",
+      "ES2022",
       "DOM",
       "DOM.Iterable"
     ],

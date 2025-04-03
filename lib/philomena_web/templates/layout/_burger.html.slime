@@ -32,3 +32,6 @@ nav#burger
   a href="/pages/donations"
     i.fa.fa-fw.fa-heart<>
     ' Donate
+  a href="/achievements"
+    i.fa.fa-fw.fa-trophy>
+    ' Achievements

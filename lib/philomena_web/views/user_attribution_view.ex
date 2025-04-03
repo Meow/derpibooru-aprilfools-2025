@@ -2,6 +2,7 @@ defmodule PhilomenaWeb.UserAttributionView do
   use PhilomenaWeb, :view
 
   alias Philomena.Attribution
+  alias Philomena.Users
   alias PhilomenaWeb.AvatarGeneratorView
   alias Philomena.Repo
 
@@ -102,31 +103,42 @@ defmodule PhilomenaWeb.UserAttributionView do
     }
   end
 
+  def rank_for_user(%{id: 212_499}), do: "Score: >:V"
+
   def rank_for_user(user) do
     user = Repo.preload(user, :game_profiles)
 
-    rank_string_from_profile(Enum.at(user.game_profiles, 0))
-  end
-
-  defp rank_string_from_profile(%{points: points, rank_override: nil}) do
-    case points do
-      n when n == 6969 -> "V.NICE"
-      n when n >= 5000 -> "A"
-      n when n >= 2000 -> "B"
-      n when n == 1337 -> "L33T"
-      n when n == 666 -> "SATAN"
-      n when n >= 500 -> "C"
-      n when n == 420 -> "GRASS"
-      n when n >= 100 -> "D"
-      n when n == 69 -> "NICE"
-      n when n >= 25 -> "E"
-      n when n >= 5 -> "F"
-      _ -> "NONE"
+    case Users.get_game_profile(user, 2) do
+      nil -> "No Score"
+      %{rank_override: nil, points: pts} -> "Score: #{pts}"
+      %{rank_override: cheat} -> cheat
+      _ -> "Error"
     end
   end
 
-  defp rank_string_from_profile(%{rank_override: override}), do: override
-  defp rank_string_from_profile(_), do: "NONE"
+  def rank_class_for_user(%{id: 279_549}), do: "rank--trans"
+  def rank_class_for_user(%{id: 338_373}), do: "rank--thomas"
+
+  def rank_class_for_user(user) do
+    user = Repo.preload(user, :game_profiles)
+
+    case Users.get_game_profile(user, 2) do
+      nil -> "rank--none"
+      %{rank_override: nil, points: 25000} -> "rank--max"
+      %{rank_override: nil, points: pts} when pts >= 10000 -> "rank--afk"
+      %{rank_override: nil, points: pts} when pts >= 5000 -> "rank--sweat"
+      %{rank_override: nil, points: pts} when pts >= 2500 -> "rank--idk"
+      %{rank_override: nil, points: pts} when pts >= 1500 -> "rank--s"
+      %{rank_override: nil, points: pts} when pts >= 900 -> "rank--a"
+      %{rank_override: nil, points: pts} when pts >= 600 -> "rank--b"
+      %{rank_override: nil, points: pts} when pts >= 400 -> "rank--c"
+      %{rank_override: nil, points: pts} when pts >= 250 -> "rank--d"
+      %{rank_override: nil, points: pts} when pts >= 100 -> "rank--e"
+      %{rank_override: nil, points: _pts} -> "rank--f"
+      %{rank_override: _cheat} -> "rank--cheater"
+      _ -> "rank--none"
+    end
+  end
 
   defp personal_title(labels, %{personal_title: t}) do
     case blank?(t) do

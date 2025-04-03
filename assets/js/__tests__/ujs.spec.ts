@@ -143,7 +143,8 @@ describe('Remote utilities', () => {
 
     afterAll(() => {
       // restore window.location to the jsdom Location object
-      window.location = oldWindowLocation;
+      // eslint-disable-next-line
+      (window as any).location = oldWindowLocation;
     });
 
     const configureForm = () => {

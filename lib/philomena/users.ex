@@ -969,4 +969,13 @@ defmodule Philomena.Users do
 
     {:ok, nil}
   end
+
+  def get_game_profile(user, game_id) do
+    Enum.find(
+      user.game_profiles,
+      fn gp ->
+        gp.game_id == game_id
+      end
+    )
+  end
 end

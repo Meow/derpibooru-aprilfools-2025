@@ -552,6 +552,9 @@ defmodule PhilomenaWeb.Router do
     resources "/settings", SettingController, only: [:edit, :update], singleton: true
     resources "/duplicate_reports", DuplicateReportController, only: [:index, :show, :create]
 
+    # af25
+    resources "/achievements", AchievementController, only: [:index, :create]
+
     get "/:id", ImageController, :show
     # get "/:forum_id", ForumController, :show # impossible to do without constraints
     get "/:forum_id/:id", TopicController, :show

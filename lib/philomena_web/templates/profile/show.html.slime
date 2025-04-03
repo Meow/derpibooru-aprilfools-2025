@@ -5,6 +5,7 @@
       = link avatar, to: ~p"/avatar/edit?#{[profile: true]}", title: "Change avatar"
     - else
       = avatar
+    = render PhilomenaWeb.UserAttributionView, "_user_points.html", object: %{user: @user}, conn: @conn
   .profile-top__name-and-links
     div
       h1.profile-top__name-header
